@@ -1,0 +1,256 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-05-22T10:33:19.599Z",
+    "end": "2025-05-22T10:33:51.322Z",
+    "duration": 31723,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "e94e0763-dcb8-4917-afc2-41fe101fdcaf",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "f7a164cd-f3d1-463c-a537-e6739a2bdb43",
+          "title": "Automate Add to Cart and Checkout Flow",
+          "fullFile": "D:\\Mahesa\\Coding Test\\project\\test\\checkout.test.js",
+          "file": "\\test\\checkout.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"Automate Add to Cart and Checkout Flow\"",
+              "fullTitle": "Automate Add to Cart and Checkout Flow \"before all\" hook in \"Automate Add to Cart and Checkout Flow\"",
+              "timedOut": false,
+              "duration": 7470,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Buka browser\n    driver = await new Builder().forBrowser('firefox').build();\n\n// Inisiasi halaman\nloginPage = new LoginPage(driver);\naddToCartPage = new AddToCartPage(driver);\ncheckoutPage = new CheckoutPage(driver);",
+              "err": {},
+              "uuid": "71762829-ec24-4cf9-9978-aea67a9cf26e",
+              "parentUUID": "f7a164cd-f3d1-463c-a537-e6739a2bdb43",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after all\" hook in \"Automate Add to Cart and Checkout Flow\"",
+              "fullTitle": "Automate Add to Cart and Checkout Flow \"after all\" hook in \"Automate Add to Cart and Checkout Flow\"",
+              "timedOut": false,
+              "duration": 1397,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Tutup browser\n    await driver.quit();",
+              "err": {},
+              "uuid": "5b6efa7e-0c54-4e83-be4d-6c3b89e7e165",
+              "parentUUID": "f7a164cd-f3d1-463c-a537-e6739a2bdb43",
+              "isHook": true,
+              "skipped": false
+            },
+            {
+              "title": "\"after each\" hook in \"Automate Add to Cart and Checkout Flow\"",
+              "fullTitle": "Automate Add to Cart and Checkout Flow \"after each\" hook in \"Automate Add to Cart and Checkout Flow\"",
+              "timedOut": false,
+              "duration": 66,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Buat file screenshot setiap selesai menjalankan test\n    const testName = this.currentTest.title.replace(/\\s+/g, '_');\n    const status = this.currentTest.state === 'passed' ? 'success' : 'failed';\n    const filename = `${testName}_${status}`;\n    const filepath = `./reports/screenshots/${filename}.png`;\n\n    await takeScreenshot(driver, filename);\n    console.log(`[[ATTACHMENT|${filepath}]]`);",
+              "err": {},
+              "uuid": "a70c66b9-3063-4904-9329-7956eec6a34f",
+              "parentUUID": "f7a164cd-f3d1-463c-a537-e6739a2bdb43",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "should add to cart and successfully checkout item",
+              "fullTitle": "Automate Add to Cart and Checkout Flow should add to cart and successfully checkout item",
+              "timedOut": false,
+              "duration": 8270,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Buka halaman login \nawait loginPage.getLogin();\n\n// Login dengan menggunakan username dan password standard\nawait loginPage.loginAsStandardUser();\n// Tunggu 10 detik sampai masuk ke halaman beranda\n    await driver.wait(until.urlContains('inventory.html'), 10000);\n\n// Masukkan barang ke keranjang\nawait addToCartPage.addToCart();\n\n// Tunggu 10 detik sampai masuk ke halaman keranjang\n    await driver.wait(until.urlContains('cart.html'), 10000);\n    const currentUrl = await driver.getCurrentUrl();\n    expect(currentUrl).to.include('cart.html');\n\n// Checkout keranjang\nawait addToCartPage.checkout();\n\n// Isi form checkout\nawait checkoutPage.fillForm();\n\n// Finish\nawait checkoutPage.finish();",
+              "err": {},
+              "uuid": "0a3907e9-7c91-4424-b45b-5e418602325e",
+              "parentUUID": "f7a164cd-f3d1-463c-a537-e6739a2bdb43",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "0a3907e9-7c91-4424-b45b-5e418602325e"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 8270,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 50000
+        },
+        {
+          "uuid": "798cc1b3-2557-425f-81ec-f9a62903b5a9",
+          "title": "Automate Login (Dynamic Credentials)",
+          "fullFile": "D:\\Mahesa\\Coding Test\\project\\test\\login.test.js",
+          "file": "\\test\\login.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"Automate Login (Dynamic Credentials)\"",
+              "fullTitle": "Automate Login (Dynamic Credentials) \"before all\" hook in \"Automate Login (Dynamic Credentials)\"",
+              "timedOut": false,
+              "duration": 8778,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Buka browser\n    driver = await new Builder().forBrowser('firefox').build();\n\n// Inisiasi halaman login\nloginPage = new LoginPage(driver);",
+              "err": {},
+              "uuid": "fb1f52bf-77ad-448a-801b-7cb24e4ac201",
+              "parentUUID": "798cc1b3-2557-425f-81ec-f9a62903b5a9",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after all\" hook in \"Automate Login (Dynamic Credentials)\"",
+              "fullTitle": "Automate Login (Dynamic Credentials) \"after all\" hook in \"Automate Login (Dynamic Credentials)\"",
+              "timedOut": false,
+              "duration": 2044,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Tutup browser\n    await driver.quit();",
+              "err": {},
+              "uuid": "4091e1bd-09d1-4693-869d-644b615c828d",
+              "parentUUID": "798cc1b3-2557-425f-81ec-f9a62903b5a9",
+              "isHook": true,
+              "skipped": false
+            },
+            {
+              "title": "\"after each\" hook in \"Automate Login (Dynamic Credentials)\"",
+              "fullTitle": "Automate Login (Dynamic Credentials) \"after each\" hook in \"Automate Login (Dynamic Credentials)\"",
+              "timedOut": false,
+              "duration": 121,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Buat file screenshot setiap selesai menjalankan test\n    const testName = this.currentTest.title.replace(/\\s+/g, '_');\n    const status = this.currentTest.state === 'passed' ? 'success' : 'failed';\n    const filename = `${testName}_${status}`;\n    const filepath = `./reports/screenshots/${filename}.png`;\n\n    await takeScreenshot(driver, filename);\n    console.log(`[[ATTACHMENT|${filepath}]]`);",
+              "err": {},
+              "uuid": "556382c6-69ce-4e61-ab45-cc4abb50d8b8",
+              "parentUUID": "798cc1b3-2557-425f-81ec-f9a62903b5a9",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "should login successfully with valid credentials",
+              "fullTitle": "Automate Login (Dynamic Credentials) should login successfully with valid credentials",
+              "timedOut": false,
+              "duration": 3551,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Buka halaman login\nawait loginPage.getLogin();\n\n// Login dengan menggunakan username dan password acak\nawait loginPage.login();\n// Tunggu 10 detik sampai masuk ke halaman beranda\n    await driver.wait(until.urlContains('inventory.html'), 10000);\n    const currentUrl = await driver.getCurrentUrl();\n    expect(currentUrl).to.include('inventory.html');",
+              "err": {},
+              "uuid": "10003ec0-ccf2-4dc7-a57c-7802138bff08",
+              "parentUUID": "798cc1b3-2557-425f-81ec-f9a62903b5a9",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "10003ec0-ccf2-4dc7-a57c-7802138bff08"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 3551,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 50000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "9.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "report",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.2"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "reports/mochawesome-report",
+        "reportFilename": "report",
+        "overwrite": "true",
+        "inlineAssets": "true"
+      },
+      "version": "5.2.0"
+    }
+  }
+}
